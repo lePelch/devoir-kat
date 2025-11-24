@@ -13,3 +13,5 @@ add_executable(Devoir_A2024_TCH009 main.c
         matrac_lib.c
         test.c
         test.h)
+
+target_link_libraries(Devoir_A2024_TCH009 m)
