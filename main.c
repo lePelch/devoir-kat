@@ -114,5 +114,54 @@ void calculer(double tab_latitudes[], double tab_longitudes[], double tab_altitu
 // Programme principal
 int main()
 {
-	return EXIT_SUCCESS;
+        double tab_latitudes[NB_MAX_POINT];
+        double tab_longitudes[NB_MAX_POINT];
+        double tab_altitudes[NB_MAX_POINT];
+        int nb_points;
+        int choix;
+
+        nb_points = 0;
+
+        while (1) {
+                choix = afficher_menu();
+
+                switch (choix) {
+                case CHARGER:
+                        nb_points = charger(tab_latitudes, tab_longitudes, tab_altitudes, NB_MAX_POINT);
+                        break;
+
+                case AFFICHER:
+                        if (nb_points > 0) {
+                                afficher(tab_latitudes, tab_longitudes, tab_altitudes, nb_points);
+                        } else {
+                                printf("Aucune trace chargee.\n");
+                        }
+                        break;
+
+                case ANALYSER:
+                        if (nb_points > 0) {
+                                analyser(tab_latitudes, tab_longitudes, tab_altitudes, nb_points);
+                        } else {
+                                printf("Aucune trace chargee.\n");
+                        }
+                        break;
+
+                case CALCULER:
+                        if (nb_points > 0) {
+                                calculer(tab_latitudes, tab_longitudes, tab_altitudes, nb_points);
+                        } else {
+                                printf("Aucune trace chargee.\n");
+                        }
+                        break;
+
+                case QUITTER:
+                        exit(EXIT_SUCCESS);
+
+                default:
+                        printf("Choix invalide.\n");
+                        break;
+                }
+        }
+
+        return EXIT_SUCCESS;
 }
